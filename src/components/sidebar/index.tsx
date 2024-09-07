@@ -1,7 +1,6 @@
 import Background from "@/components/ui/background"
 import type { PropsWithChildren } from "react"
 import SidebarContent from "./sidebar-content"
-import SidebarFooter from "./sidebar-footer"
 import SidebarGroup from "./sidebar-group"
 import SidebarGroupHeader from "./sidebar-group-header"
 import SidebarGroupItem from "./sidebar-group-item"
@@ -24,7 +23,7 @@ export default function Sidebar({ level, items, children }: SidebarRootProps) {
 			<Background
 				rounded={false}
 				border={false}
-				className="flex min-h-screen flex-col"
+				className="flex min-h-screen min-w-28 flex-col justify-center bg-black"
 			>
 				{children}
 			</Background>
@@ -38,7 +37,6 @@ Sidebar.displayName = "Sidebar.Root"
 Sidebar.Root = Sidebar
 Sidebar.Provider = SidebarProvider
 Sidebar.Header = SidebarHeader
-Sidebar.Footer = SidebarFooter
 Sidebar.Content = SidebarContent
 Sidebar.Group = SidebarGroup
 Sidebar.GroupHeader = SidebarGroupHeader

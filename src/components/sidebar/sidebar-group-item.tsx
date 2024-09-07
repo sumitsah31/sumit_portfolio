@@ -15,9 +15,8 @@ export default function SidebarGroupItem({ child }: SidebarGroupItemProps) {
 			key={child.label}
 			to={`/${child.href}`}
 			className={cn(
-				"group flex items-center rounded-md text-sm transition-all duration-200 ease-in-out",
-				"justify-between p-3 hover:bg-slate-100",
-				isActive && "bg-[#C4DCF7]/40 font-medium hover:bg-[#C4DCF7]/65",
+				"group flex items-center rounded-sm text-lg transition-all duration-200 ease-in-out",
+				"justify-between hover:bg-slate-100",
 			)}
 		>
 			<span

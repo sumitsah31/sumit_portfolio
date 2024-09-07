@@ -26,8 +26,6 @@ export default function SideBar() {
 					</>
 				)}
 			</Sidebar.Content>
-
-			<Sidebar.Footer />
 		</Sidebar.Root>
 	)
 }

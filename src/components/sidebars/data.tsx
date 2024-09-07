@@ -1,3 +1,4 @@
+import { FaHome } from "react-icons/fa"
 import {
 	PiSquaresFourFill as DashboardActiveIcon,
 	PiSquaresFourDuotone as DashboardInactiveIcon,
@@ -10,9 +11,9 @@ export const dashboardLevelSidebarItems: SidebarItem[] = [
 		children: [
 			{
 				label: "home",
-				href: "/",
-				icon: <DashboardActiveIcon className="size-5 fill-blue-800" />,
-				inactiveIcon: <DashboardInactiveIcon className="size-5" />,
+				href: "/home",
+				icon: <FaHome className="size-5 fill-blue-800" />,
+				inactiveIcon: <FaHome className="size-5" />,
 			},
 			{
 				label: "about",
