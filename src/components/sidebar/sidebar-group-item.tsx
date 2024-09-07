@@ -9,6 +9,7 @@ interface SidebarGroupItemProps {
 export default function SidebarGroupItem({ child }: SidebarGroupItemProps) {
 	const { pathname } = useLocation()
 	const isActive = pathname.split("/").includes(child.href!)
+	console.log(pathname.split("/").includes(child.href!), pathname)
 
 	return (
 		<Link
@@ -22,7 +23,7 @@ export default function SidebarGroupItem({ child }: SidebarGroupItemProps) {
 			<span
 				className={cn(
 					"flex items-center space-x-3",
-					isActive ? "text-blue-800" : "text-slate-600",
+					isActive ? "text-teal-400" : "text-slate-600",
 				)}
 			>
 				{/* Icon */}
@@ -31,7 +32,7 @@ export default function SidebarGroupItem({ child }: SidebarGroupItemProps) {
 				{/* Label */}
 				<span
 					className={cn(
-						isActive ? "text-blue-800 group-hover:text-blue-800" : "",
+						isActive ? "text-teal-400 group-hover:text-blue-800" : "",
 					)}
 				>
 					{child.label}

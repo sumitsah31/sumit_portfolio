@@ -19,8 +19,8 @@ export default function Home() {
 				<p className="text-3xl">
 					and I'm a Web Developer<span className="text-teal-400">.</span>{" "}
 				</p>
-				<div className="mt-2 w-[90%] border border-teal-400" />
-				<div className="flex justify-end gap-2">
+				<div className="mt-2 w-full border border-teal-400" />
+				<div className="flex items-center justify-end gap-2">
 					<a
 						href="mailto:sumitdashing1@gmail.com"
 						target="_blank"

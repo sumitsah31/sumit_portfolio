@@ -23,7 +23,7 @@ export default function Sidebar({ level, items, children }: SidebarRootProps) {
 			<Background
 				rounded={false}
 				border={false}
-				className="flex min-h-screen min-w-28 flex-col justify-center bg-slate-950"
+				className="flex min-h-screen min-w-36 flex-col justify-center bg-slate-950"
 			>
 				{children}
 			</Background>
