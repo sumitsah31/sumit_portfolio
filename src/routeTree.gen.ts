@@ -16,15 +16,27 @@ import { Route as rootRoute } from './routes/~__root'
 
 // Create Virtual Routes
 
+const ProjectLazyImport = createFileRoute('/project')()
 const HomeLazyImport = createFileRoute('/home')()
+const ExperienceLazyImport = createFileRoute('/experience')()
 const AboutLazyImport = createFileRoute('/about')()
 
 // Create/Update Routes
+
+const ProjectLazyRoute = ProjectLazyImport.update({
+  path: '/project',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/~project.lazy').then((d) => d.Route))
 
 const HomeLazyRoute = HomeLazyImport.update({
   path: '/home',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/~home.lazy').then((d) => d.Route))
+
+const ExperienceLazyRoute = ExperienceLazyImport.update({
+  path: '/experience',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/~experience.lazy').then((d) => d.Route))
 
 const AboutLazyRoute = AboutLazyImport.update({
   path: '/about',
@@ -42,11 +54,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/home': {
       id: '/home'
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/project': {
+      id: '/project'
+      path: '/project'
+      fullPath: '/project'
+      preLoaderRoute: typeof ProjectLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -56,7 +82,9 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   AboutLazyRoute,
+  ExperienceLazyRoute,
   HomeLazyRoute,
+  ProjectLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -68,14 +96,22 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "~__root.tsx",
       "children": [
         "/about",
-        "/home"
+        "/experience",
+        "/home",
+        "/project"
       ]
     },
     "/about": {
       "filePath": "~about.lazy.tsx"
     },
+    "/experience": {
+      "filePath": "~experience.lazy.tsx"
+    },
     "/home": {
       "filePath": "~home.lazy.tsx"
+    },
+    "/project": {
+      "filePath": "~project.lazy.tsx"
     }
   }
 }
