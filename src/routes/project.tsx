@@ -1,10 +1,10 @@
 import { FaExternalLinkAlt } from "react-icons/fa"
 
-export default function Experience() {
+export default function Project() {
 	return (
 		<div className="flex w-full flex-col gap-2 p-12">
 			<p className="text-6xl">
-				Experi<span className="text-teal-400">ence</span>
+				Proj<span className="text-teal-400">ects</span>
 			</p>
 			<div className="w-[90%] border border-teal-400" />
 			<div className="flex flex-col gap-5">
@@ -34,7 +34,6 @@ export default function Experience() {
 					<div className="text-sm">
 						<p> Technology used :</p>
 						<li>React JS with TypeScript, JavaScript</li>
-						<li>Shadcn UI Components</li>
 						<li>Zustand, React-tracked, Redux, Zov, Zod </li>
 						<li>Tailwind CSS, Material UI</li>
 						<li>GoLang</li>
