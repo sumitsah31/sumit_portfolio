@@ -3,7 +3,8 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
 import { routeTree } from "./routeTree.gen.ts"
-const router = createRouter({ routeTree })
+import NotFound from "./routes/not-found.tsx"
+const router = createRouter({ routeTree, defaultNotFoundComponent: NotFound })
 declare module "@tanstack/react-router" {
 	interface Register {
 		router: typeof router
