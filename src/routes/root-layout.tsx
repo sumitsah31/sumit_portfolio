@@ -5,8 +5,8 @@ import { useEffect } from "react"
 export default function RootComponent() {
 	const navigate = useNavigate()
 	useEffect(() => {
-		navigate({ to: "/home" })
-	}, [])
+		if (window.location.pathname === "/") navigate({ to: "/home" })
+	}, [navigate])
 	return (
 		<div
 			vaul-drawer-wrapper=""

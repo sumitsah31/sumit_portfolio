@@ -13,7 +13,7 @@ export default function Home() {
 
 	return (
 		<div className="flex w-full justify-between">
-			<div className="ml-32 mt-52 flex flex-col gap-2">
+			<div className="ml-12 mt-52 flex flex-col gap-2">
 				<p className="text-7xl">
 					Hi, I'm<span className="text-teal-400"> Sumit Kumar Sah</span>
 				</p>

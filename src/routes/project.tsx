@@ -114,6 +114,17 @@ export default function Project() {
 					</li>
 				</div>
 			</div>
+			<p className="mt-5 italic">
+				**I also have few easy and smaller projects which I do just for the
+				personal developements, you can have a look at them on my Github.{" "}
+				<a
+					target="_blank"
+					href="https://github.com/sumitsah31"
+					className="text-teal-400 underline underline-offset-4 hover:cursor-pointer"
+				>
+					Click here
+				</a>
+			</p>
 		</div>
 	)
 }
