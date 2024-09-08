@@ -8,10 +8,10 @@ export default function Project() {
 			</p>
 			<div className="w-[90%] border border-teal-400" />
 			<div className="flex flex-col gap-5">
-				<div>
+				<div className="text-sm">
 					<div className="flex items-center gap-2 underline underline-offset-4">
 						<a
-							href="https://www.apxor.com/"
+							href="https://engage.apxor.com/"
 							target="_blank"
 						>
 							<FaExternalLinkAlt
@@ -19,32 +19,36 @@ export default function Project() {
 								className="text-teal-400"
 							/>
 						</a>
-						<p className="text-xl">Apxor Private Limited: </p>
+						<p className="text-base">New In- App Nudges: </p>
 					</div>
-					<p className="mb-2 italic">
-						Software Development Engineer-I (May,2023- Present)
+					<p className="italic">
+						Tech used: React Js with TypeScript, Shadcn Ui, Tanstack Query and
+						table, Tailwind CSS, Zustand, Zod etc.
 					</p>
-					<p>
-						I work as a Full Stack Developer on a large-scale project with a
-						dedicated and extensive team, including developers specializing in
-						SDKs, back-end, front-end, QA, and product. I have architected and
-						designed reusable React components and algorithms for optimizing the
-						dashboard, contributing to a more efficient and scalable system.
-					</p>
-					<div className="text-sm">
-						<p> Technology used :</p>
-						<li>React JS with TypeScript, JavaScript</li>
-						<li>Zustand, React-tracked, Redux, Zov, Zod </li>
-						<li>Tailwind CSS, Material UI</li>
-						<li>GoLang</li>
-						<li>Tanstack Query, Tanstack Table etc</li>
-						<li>Gitlab, CI/CD</li>
-					</div>
+					<li>
+						We specialize in assisting consumer app developers in creating
+						”In-app Nudges” on a no-code dashboard to enhance user satisfaction,
+						engagement, conversions, and retention, ultimately leading to
+						revenue growth. Additionally, we provide data and analytics
+						regarding these ”In-App” nudges.
+					</li>
+					<li>
+						The platform serves as a unified platform for various app platforms
+						like Web, iOS, and Android.
+					</li>
+					<li>
+						Personally, I have developed numerous features in the platform,
+						including configuration, simulator, analysis, etc.
+					</li>
+					<li>
+						The platform includes integrating and creating nudges for apps,
+						testing, and collecting the data of user engagement
+					</li>
 				</div>
-				<div>
+				<div className="text-sm">
 					<div className="flex items-center gap-2 underline underline-offset-4">
 						<a
-							href="https://cerclex.com/"
+							href="https://Nudges.apxor.com/"
 							target="_blank"
 						>
 							<FaExternalLinkAlt
@@ -52,25 +56,62 @@ export default function Project() {
 								className="text-teal-400"
 							/>
 						</a>
-						<p className="text-xl">Infinite Cercle X: </p>
+						<p className="text-base"> In- App Nudges: </p>
 					</div>
-					<p className="mb-2 italic">
-						Junior Developer (September,2022- April 2023)
+					<p className="italic">
+						Tech used: React Js with JavaScript, Material UI(V4),React-Tracked,
+						Tanstack Query and table, Zustand, Zod etc.
 					</p>
-					<p>
-						Designed and implemented a scalable architecture for a full stack
-						project using React JS and Java Spring Boot, achieved a codebase
-						reduction of 20 percent through effective refactoring and
-						modularization strategies.
-					</p>
-					<div className="text-sm">
-						<p> Technology used :</p>
-						<li>React JS with Typescript</li>
-						<li>Context API</li>
-						<li>Material UI</li>
-						<li>SpringBoot</li>
-						<li>Tanstack Libraries like table, charts etc</li>
+					<li>Old Dashboard for Nudges, campaign and survey.</li>
+					<li>
+						The platform serves as a unified platform for various app platforms
+						like Web, iOS, and Android.
+					</li>
+					<li>
+						Personally, I have developed numerous features in the platform,
+						including configuration, simulator, analysis, etc.
+					</li>
+					<li>
+						The platform includes integrating and creating nudges for apps,
+						testing, and collecting the data of user engagement
+					</li>
+				</div>
+				<div className="text-sm">
+					<div className="flex items-center gap-2 underline underline-offset-4">
+						<a
+							href="https://epr.cerclex.com/dashboard"
+							target="_blank"
+						>
+							<FaExternalLinkAlt
+								size={"12px"}
+								className="text-teal-400"
+							/>
+						</a>
+						<p className="text-base">
+							Extended Producers Responsibility (EPR) dashboard:
+						</p>
 					</div>
+					<p className="italic">
+						Tech used: React Js with TypeScript, Material UI (V5), Context API,
+						Tanstack Charts.
+					</p>
+					<li>Web2, Web3 and Blockchain Integrated dashboard</li>
+					<li>
+						Created a web application for a marketplace model use-case that
+						addresses the EPR liability of MNCs and big industries struggling to
+						meet their waste targets.
+					</li>
+					<li>
+						Designed relevant dashboards tailored for user types such as brands,
+						recyclers, and aggregators with features such as creating
+						deliveries, accepting invoices, managing targets, and generating
+						time range-based reports and invoices, etc.
+					</li>
+					<li>
+						Integrated blockchain using the Solidity network to maintain
+						transparency of the actual waste recycled and maintain the integrity
+						of the generated certificates.
+					</li>
 				</div>
 			</div>
 		</div>

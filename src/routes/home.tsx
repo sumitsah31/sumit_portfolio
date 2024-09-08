@@ -10,6 +10,7 @@ export default function Home() {
 	const handleEmailClick = () => {
 		window.location.href = "mailto:sumitdashing1@gmail.com"
 	}
+
 	return (
 		<div className="flex w-full justify-between">
 			<div className="ml-32 mt-52 flex flex-col gap-2">
