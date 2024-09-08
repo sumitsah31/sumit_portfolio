@@ -1,12 +1,7 @@
 import SideBar from "@/components/sidebars"
-import { Outlet, useNavigate } from "@tanstack/react-router"
-import { useEffect } from "react"
+import { Outlet } from "@tanstack/react-router"
 
 export default function RootComponent() {
-	const navigate = useNavigate()
-	useEffect(() => {
-		if (window.location.pathname === "/") navigate({ to: "/home" })
-	}, [navigate])
 	return (
 		<div
 			vaul-drawer-wrapper=""
