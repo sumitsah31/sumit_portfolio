@@ -1,8 +1,8 @@
-import { CiLinkedin, CiLocationOn, CiMail } from "react-icons/ci"
-import { FaGithub, FaNode, FaReact } from "react-icons/fa"
+import { CiLocationOn } from "react-icons/ci"
+import { FaGithub, FaLinkedin, FaNode, FaReact } from "react-icons/fa"
 import { FaGolang } from "react-icons/fa6"
-import { GoDownload } from "react-icons/go"
-import { MdCss } from "react-icons/md"
+import { IoMdDownload } from "react-icons/io"
+import { MdCss, MdEmail, MdOutlineLocalPhone } from "react-icons/md"
 import { SiJavascript } from "react-icons/si"
 import { TiHtml5 } from "react-icons/ti"
 
@@ -30,11 +30,17 @@ export default function Home() {
 						<p>Hyderbad,Telangana,India</p>
 					</div>
 					<div className="flex items-center justify-end gap-2">
+						<MdOutlineLocalPhone
+							size={"20px"}
+							onClick={() => {
+								window.open("tel:+917656087001")
+							}}
+						/>
 						<a
 							href="mailto:sumitdashing1@gmail.com"
 							target="_blank"
 						>
-							<CiMail
+							<MdEmail
 								onClick={handleEmailClick}
 								size={"20px"}
 							/>
@@ -43,7 +49,7 @@ export default function Home() {
 							href="https://www.linkedin.com/in/sumitkumarsah31/"
 							target="_blank"
 						>
-							<CiLinkedin size={"20px"} />
+							<FaLinkedin size={"20px"} />
 						</a>
 						<a
 							href="https://github.com/sumitsah31"
@@ -56,7 +62,7 @@ export default function Home() {
 							href="https://drive.google.com/file/d/1FEECVCMqSMoO9MioWAmwf_GP9Req2eFt/view?usp=drive_link"
 							target="_blank"
 						>
-							<GoDownload size={"20px"} />
+							<IoMdDownload size={"20px"} />
 						</a>
 					</div>
 				</div>

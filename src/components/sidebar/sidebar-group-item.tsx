@@ -9,7 +9,6 @@ interface SidebarGroupItemProps {
 export default function SidebarGroupItem({ child }: SidebarGroupItemProps) {
 	const { pathname } = useLocation()
 	const isActive = pathname.split("/").includes(child.href!)
-	console.log(pathname.split("/").includes(child.href!), pathname)
 
 	return (
 		<Link
