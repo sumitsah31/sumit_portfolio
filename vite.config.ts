@@ -5,7 +5,6 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
 	plugins: [TanStackRouterVite(), react()],
-	base: "/sumit_portfolio/",
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
