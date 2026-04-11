@@ -17,6 +17,9 @@ module.exports = {
 			},
 		},
 		extend: {
+			fontFamily: {
+				sans: ["Inter", "system-ui", "sans-serif"],
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
@@ -66,10 +69,32 @@ module.exports = {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: "0" },
 				},
+				float: {
+					"0%, 100%": { transform: "translateY(0px)" },
+					"50%": { transform: "translateY(-12px)" },
+				},
+				"pulse-glow": {
+					"0%, 100%": { opacity: "1" },
+					"50%": { opacity: "0.5" },
+				},
+				"gradient-shift": {
+					"0%, 100%": { backgroundPosition: "0% 50%" },
+					"50%": { backgroundPosition: "100% 50%" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
+				float: "float 6s ease-in-out infinite",
+				"pulse-glow": "pulse-glow 2s ease-in-out infinite",
+				"gradient-shift": "gradient-shift 8s ease infinite",
+			},
+			backgroundImage: {
+				"grid-pattern":
+					"linear-gradient(to right, rgba(139,92,246,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(139,92,246,0.03) 1px, transparent 1px)",
+			},
+			backgroundSize: {
+				"grid-40": "40px 40px",
 			},
 		},
 	},
