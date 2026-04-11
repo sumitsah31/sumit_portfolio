@@ -2,13 +2,12 @@ export const personalInfo = {
 	name: "Sumit Kumar Sah",
 	title: "Full Stack Web Developer",
 	location: "Hyderabad, Telangana, India",
-	email: "sumitdashing1@gmail.com",
+	email: "sahsumitofficial@gmail.com",
 	phone: "+917656087001",
 	linkedin: "https://www.linkedin.com/in/sumitkumarsah31/",
 	github: "https://github.com/sumitsah31",
 	githubUsername: "sumitsah31",
-	resumeUrl:
-		"https://drive.google.com/file/d/1FEECVCMqSMoO9MioWAmwf_GP9Req2eFt/view?usp=drive_link",
+	resumeUrl: "/resume.pdf",
 	bio: "Full Stack Developer with over two years of experience passionate about building scalable, robust web applications using React.js and Go (Golang). Seeking a challenging role to leverage my expertise in creating dynamic user interfaces and performant server-side logic, while contributing to innovative projects that drive business growth.",
 }
 

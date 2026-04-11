@@ -168,8 +168,7 @@ export default function Hero() {
 					</button>
 					<a
 						href={personalInfo.resumeUrl}
-						target="_blank"
-						rel="noopener noreferrer"
+						download="Sumit_Kumar_Sah_Resume.pdf"
 						className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3 text-sm font-semibold text-neutral-300 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
 					>
 						<Download size={16} />
