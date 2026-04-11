@@ -4,7 +4,8 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ""
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ""
 
 export const isSupabaseConfigured =
-	supabaseUrl.startsWith("https://") && supabaseAnonKey.length > 10
+	(supabaseUrl.startsWith("https://") || supabaseUrl.startsWith("http://")) &&
+	supabaseAnonKey.length > 10
 
 // Create a real client if configured, otherwise a dummy that returns empty results
 export const supabase: SupabaseClient = isSupabaseConfigured
