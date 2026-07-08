@@ -35,9 +35,7 @@ export default function Travel() {
 	if (!loading && photos.length === 0) return null
 
 	const getImageUrl = (path: string) => {
-		const { data } = supabase.storage
-			.from("travel-photos")
-			.getPublicUrl(path)
+		const { data } = supabase.storage.from("travel-photos").getPublicUrl(path)
 		return data.publicUrl
 	}
 
@@ -72,7 +70,10 @@ export default function Travel() {
 						{/* Overlay on hover */}
 						<div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
 							<div className="flex items-center gap-1.5 text-sm font-medium text-white">
-								<MapPin size={14} className="text-violet-400" />
+								<MapPin
+									size={14}
+									className="text-violet-400"
+								/>
 								{photo.location}
 							</div>
 							{photo.tags.length > 0 && (
@@ -92,7 +93,10 @@ export default function Travel() {
 						{/* Always visible location label */}
 						<div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 transition-opacity duration-300 group-hover:opacity-0">
 							<div className="flex items-center gap-1.5 text-xs text-white/80">
-								<MapPin size={12} className="text-violet-400" />
+								<MapPin
+									size={12}
+									className="text-violet-400"
+								/>
 								{photo.location}
 							</div>
 						</div>

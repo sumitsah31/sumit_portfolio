@@ -44,6 +44,16 @@
 	}
 
 	body {
-		@apply bg-[#0a0a0f] font-sans text-white antialiased;
+		@apply bg-night font-sans text-ink antialiased;
+	}
+
+	::selection {
+		background: #e0a94a;
+		color: #161310;
+	}
+
+	input::placeholder,
+	textarea::placeholder {
+		color: #6b655d;
 	}
 }

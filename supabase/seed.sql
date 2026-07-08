@@ -26,7 +26,7 @@ insert into public.experiences (company, role, start_date, end_date, description
     'Work as a Full Stack Developer on a large-scale project with a dedicated team including SDK, backend, frontend, QA, and product specialists.',
     'Architected and designed reusable React components and algorithms for optimizing the dashboard, contributing to a more efficient and scalable system.'
   ],
-  array['React JS', 'TypeScript', 'Shadcn UI', 'Zustand', 'Redux', 'TanStack Query', 'Tailwind CSS', 'GoLang', 'GitLab CI/CD'],
+  array['React JS', 'TypeScript', 'Shadcn UI', 'Zustand', 'Redux', 'TanStack Query', 'Tailwind CSS', 'GitLab CI/CD'],
   'https://www.apxor.com/',
   1
 ),

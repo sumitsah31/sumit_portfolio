@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#161310"/>
+  <text x="11" y="35" font-family="monospace" font-size="30" fill="#7a746a" text-anchor="middle" dominant-baseline="central">{</text>
+  <text x="33" y="35" font-family="Georgia,serif" font-style="italic" font-weight="500" font-size="30" fill="#e0a94a" text-anchor="middle" dominant-baseline="central">sks</text>
+  <text x="55" y="35" font-family="monospace" font-size="30" fill="#7a746a" text-anchor="middle" dominant-baseline="central">}</text>
+</svg>

@@ -71,9 +71,7 @@ export default function ExperienceManager() {
 				</h2>
 				<input
 					value={editing.company}
-					onChange={e =>
-						setEditing({ ...editing, company: e.target.value })
-					}
+					onChange={e => setEditing({ ...editing, company: e.target.value })}
 					placeholder="Company"
 					required
 					className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none focus:border-violet-500"
@@ -97,9 +95,7 @@ export default function ExperienceManager() {
 					/>
 					<input
 						value={editing.end_date}
-						onChange={e =>
-							setEditing({ ...editing, end_date: e.target.value })
-						}
+						onChange={e => setEditing({ ...editing, end_date: e.target.value })}
 						placeholder="End Date (e.g. Present)"
 						required
 						className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none focus:border-violet-500"
@@ -118,7 +114,10 @@ export default function ExperienceManager() {
 					onChange={e =>
 						setEditing({
 							...editing,
-							tech_stack: e.target.value.split(",").map(s => s.trim()).filter(Boolean),
+							tech_stack: e.target.value
+								.split(",")
+								.map(s => s.trim())
+								.filter(Boolean),
 						})
 					}
 					placeholder="Tech Stack (comma separated)"

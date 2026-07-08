@@ -1,4 +1,4 @@
-import { navItems } from "@/data/portfolio-data"
+import { navItems, personalInfo } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
 import { useNavigationStore } from "@/stores/navigation-store"
 import { AnimatePresence, motion } from "framer-motion"
@@ -25,37 +25,47 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+					className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+					onClick={onClose}
 				>
 					<motion.div
 						initial={{ x: "100%" }}
 						animate={{ x: 0 }}
 						exit={{ x: "100%" }}
-						transition={{ type: "spring", damping: 25, stiffness: 200 }}
-						className="absolute right-0 top-0 flex h-full w-72 flex-col bg-[#0a0a0f]/95 p-8 backdrop-blur-md"
+						transition={{ type: "spring", damping: 26, stiffness: 220 }}
+						onClick={e => e.stopPropagation()}
+						className="absolute right-0 top-0 flex h-full w-72 flex-col border-l border-line bg-night/95 p-8 backdrop-blur-md"
 					>
 						<button
 							onClick={onClose}
-							className="mb-12 self-end text-neutral-400 transition-colors hover:text-white"
+							aria-label="Close menu"
+							className="mb-12 self-end text-ink-dim transition-colors hover:text-ink"
 						>
-							<X size={24} />
+							<X size={22} />
 						</button>
 
-						<nav className="flex flex-col gap-2">
+						<nav className="flex flex-col gap-1">
 							{navItems.map(item => (
 								<button
 									key={item.id}
 									onClick={() => handleClick(item.id)}
-									className={`rounded-lg px-4 py-3 text-left text-lg font-medium transition-colors ${
+									className={`rounded-[8px] px-4 py-3 text-left font-mono text-[15px] transition-colors ${
 										activeSection === item.id
-											? "bg-violet-500/10 text-violet-400"
-											: "text-neutral-400 hover:bg-white/5 hover:text-white"
+											? "bg-surface text-gold"
+											: "text-ink-dim hover:bg-surface hover:text-ink"
 									}`}
 								>
 									{item.label}
 								</button>
 							))}
 						</nav>
+
+						<a
+							href={personalInfo.resumeUrl}
+							className="mt-6 inline-flex items-center justify-center gap-2 rounded-[8px] border border-line-cv px-4 py-3 font-mono text-[13px] text-ink transition-colors hover:border-gold"
+						>
+							CV ↓
+						</a>
 					</motion.div>
 				</motion.div>
 			)}

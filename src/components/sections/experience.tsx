@@ -2,15 +2,16 @@ import SectionWrapper from "@/components/layout/section-wrapper"
 import {
 	type ExperienceItem,
 	staticExperiences,
+	stripGoTech,
 } from "@/data/portfolio-data"
 import { isSupabaseConfigured, supabase } from "@/lib/supabase"
-import { motion } from "framer-motion"
-import { ExternalLink } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 
 export default function Experience() {
-	const [experiences, setExperiences] =
-		useState<ExperienceItem[]>(staticExperiences)
+	const [experiences, setExperiences] = useState<ExperienceItem[]>(() =>
+		stripGoTech(staticExperiences),
+	)
 
 	useEffect(() => {
 		if (!isSupabaseConfigured) return
@@ -20,92 +21,78 @@ export default function Experience() {
 			.order("sort_order")
 			.then(({ data }) => {
 				if (data && data.length > 0) {
-					setExperiences(data)
+					setExperiences(stripGoTech(data as ExperienceItem[]))
 				}
 			})
 	}, [])
 
 	return (
-		<SectionWrapper id="experience">
-			<h2 className="mb-12 text-3xl font-bold sm:text-4xl lg:text-5xl">
-				Experi
-				<span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-					ence
-				</span>
-			</h2>
+		<SectionWrapper
+			id="experience"
+			className="pb-6 pt-16"
+		>
+			<div className="mb-9 flex items-baseline gap-[14px]">
+				<span className="font-mono text-[13px] text-gold">02</span>
+				<h2 className="m-0 font-serif text-[34px] font-normal sm:text-[46px]">
+					Experience
+				</h2>
+			</div>
 
-			<div className="relative">
-				{/* Timeline line */}
-				<div className="absolute bottom-0 left-4 top-0 w-px bg-gradient-to-b from-violet-500/50 via-indigo-500/50 to-transparent lg:left-8" />
+			<div className="relative flex flex-col gap-[34px] pl-[30px]">
+				{/* Rail */}
+				<div className="absolute bottom-1.5 left-1 top-1.5 w-px bg-[linear-gradient(#e0a94a,#e0a94a33,transparent)]" />
 
-				<div className="flex flex-col gap-12">
-					{experiences.map((exp, i) => (
-						<motion.div
-							key={exp.company + i}
-							initial={{ opacity: 0, x: 30 }}
-							whileInView={{ opacity: 1, x: 0 }}
-							transition={{ duration: 0.5, delay: i * 0.1 }}
-							viewport={{ once: true }}
-							className="relative pl-12 lg:pl-20"
-						>
-							{/* Timeline dot */}
-							<div className="absolute left-2.5 top-1 h-3 w-3 rounded-full border-2 border-violet-500 bg-[#0a0a0f] lg:left-6.5">
-								<div className="absolute inset-0 animate-pulse-glow rounded-full bg-violet-500/40" />
-							</div>
+				{experiences.map((exp, i) => (
+					<div
+						key={exp.company + i}
+						className="relative"
+					>
+						{/* Dot */}
+						<div
+							className={cn(
+								"absolute left-[-30px] top-1.5 h-[9px] w-[9px] rounded-full",
+								i === 0
+									? "bg-gold shadow-[0_0_0_4px_#2a2115]"
+									: "bg-[#4a453e] shadow-[0_0_0_4px_#201d19]",
+							)}
+						/>
 
-							<div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-violet-500/30">
-								{/* Header */}
-								<div className="mb-2 flex flex-wrap items-center gap-3">
-									<h3 className="text-lg font-semibold text-white">
-										{exp.company}
-									</h3>
-									{exp.company_url && (
-										<a
-											href={exp.company_url}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="text-violet-400 transition-colors hover:text-violet-300"
-										>
-											<ExternalLink size={14} />
-										</a>
-									)}
-								</div>
+						<div className="mb-3 flex flex-wrap items-baseline gap-3">
+							<h3 className="m-0 font-serif text-[24px] font-normal text-ink">
+								{exp.company}
+							</h3>
+							<span className="font-mono text-[12px] text-gold">
+								{exp.role}
+							</span>
+							<span className="ml-auto font-mono text-[12px] text-ink-dim">
+								{exp.start_date} — {exp.end_date}
+							</span>
+						</div>
 
-								<p className="mb-1 text-sm font-medium text-violet-300">
-									{exp.role}
-								</p>
-								<p className="mb-4 text-xs text-neutral-500">
-									{exp.start_date} — {exp.end_date}
-								</p>
+						<ul className="m-0 mb-3.5 flex list-none flex-col gap-2 p-0">
+							{exp.description.map((desc, j) => (
+								<li
+									key={j}
+									className="flex gap-2.5 text-[14.5px] leading-[1.55] text-ink-muted"
+								>
+									<span className="shrink-0 text-gold">▹</span>
+									{desc}
+								</li>
+							))}
+						</ul>
 
-								{/* Description */}
-								<ul className="mb-4 space-y-2">
-									{exp.description.map((desc, j) => (
-										<li
-											key={j}
-											className="flex gap-2 text-sm text-neutral-300"
-										>
-											<span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500/50" />
-											{desc}
-										</li>
-									))}
-								</ul>
-
-								{/* Tech stack */}
-								<div className="flex flex-wrap gap-2">
-									{exp.tech_stack.map(tech => (
-										<span
-											key={tech}
-											className="rounded-full bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300"
-										>
-											{tech}
-										</span>
-									))}
-								</div>
-							</div>
-						</motion.div>
-					))}
-				</div>
+						<div className="flex flex-wrap gap-2">
+							{exp.tech_stack.map(tech => (
+								<span
+									key={tech}
+									className="rounded-[6px] border border-line-chip bg-surface px-[9px] py-1 font-mono text-[11px] text-ink-muted"
+								>
+									{tech}
+								</span>
+							))}
+						</div>
+					</div>
+				))}
 			</div>
 		</SectionWrapper>
 	)

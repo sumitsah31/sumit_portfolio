@@ -19,7 +19,9 @@ export const supabase: SupabaseClient = isSupabaseConfigured
 							data: { subscription: { unsubscribe: () => {} } },
 						}),
 						signInWithPassword: () =>
-							Promise.resolve({ error: { message: "Supabase not configured" } }),
+							Promise.resolve({
+								error: { message: "Supabase not configured" },
+							}),
 						signOut: () => Promise.resolve({}),
 					}
 				}
@@ -41,7 +43,8 @@ export const supabase: SupabaseClient = isSupabaseConfigured
 					return {
 						from: () => ({
 							getPublicUrl: () => ({ data: { publicUrl: "" } }),
-							upload: () => Promise.resolve({ error: { message: "Not configured" } }),
+							upload: () =>
+								Promise.resolve({ error: { message: "Not configured" } }),
 							remove: () => Promise.resolve({ error: null }),
 						}),
 					}

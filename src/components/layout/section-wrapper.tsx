@@ -5,31 +5,26 @@ import { type ReactNode } from "react"
 interface SectionWrapperProps {
 	id: string
 	children: ReactNode
+	/** Extra classes applied to the inner max-width container (e.g. padding). */
 	className?: string
-	fullHeight?: boolean
 }
 
 export default function SectionWrapper({
 	id,
 	children,
 	className,
-	fullHeight,
 }: SectionWrapperProps) {
 	return (
 		<section
 			id={id}
-			className={cn(
-				"scroll-mt-20 px-4 sm:px-6 lg:px-8",
-				fullHeight ? "min-h-screen" : "py-24 lg:py-32",
-				className,
-			)}
+			className="scroll-mt-24"
 		>
 			<motion.div
-				initial={{ opacity: 0, y: 40 }}
+				initial={{ opacity: 0, y: 24 }}
 				whileInView={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6, ease: "easeOut" }}
-				viewport={{ once: true, margin: "-100px" }}
-				className="mx-auto max-w-6xl"
+				viewport={{ once: true, margin: "-80px" }}
+				transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
+				className={cn("mx-auto max-w-[1160px] px-6 sm:px-10", className)}
 			>
 				{children}
 			</motion.div>

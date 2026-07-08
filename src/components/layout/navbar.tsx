@@ -1,10 +1,33 @@
-import { navItems } from "@/data/portfolio-data"
+import { navItems, personalInfo } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
+import { cn } from "@/lib/utils"
 import { useNavigationStore } from "@/stores/navigation-store"
-import { motion } from "framer-motion"
 import { Menu } from "lucide-react"
 import { useState } from "react"
 import MobileMenu from "./mobile-menu"
+
+function BrandMark({ onClick }: { onClick: () => void }) {
+	return (
+		<button
+			onClick={onClick}
+			aria-label="Back to top"
+			className="inline-flex items-baseline gap-[3px]"
+		>
+			<span className="font-mono text-[23px] leading-none text-brace">
+				{"{"}
+			</span>
+			<span className="font-serif text-[25px] font-medium italic leading-[0.85] tracking-[-0.02em] text-gold">
+				sks
+			</span>
+			<span className="ml-0.5 font-mono text-[11px] font-medium tracking-[0.1em] text-ink-dim">
+				dev
+			</span>
+			<span className="ml-0.5 font-mono text-[23px] leading-none text-brace">
+				{"}"}
+			</span>
+		</button>
+	)
+}
 
 export default function Navbar() {
 	const [mobileOpen, setMobileOpen] = useState(false)
@@ -13,55 +36,41 @@ export default function Navbar() {
 
 	return (
 		<>
-			<header className="fixed left-0 right-0 top-[3px] z-50 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-md">
-				<div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-					<button
-						onClick={() => scrollToSection("hero")}
-						className="text-xl font-bold tracking-tight"
-					>
-						<span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-							SK
-						</span>
-					</button>
+			<header className="sticky top-0 z-50 border-b border-line bg-night/80 backdrop-blur-[10px]">
+				<div className="mx-auto flex max-w-[1160px] items-center justify-between px-6 py-5 sm:px-10">
+					<BrandMark onClick={() => scrollToSection("top")} />
 
 					{/* Desktop nav */}
-					<nav className="hidden items-center gap-1 lg:flex">
+					<nav className="hidden items-center gap-[30px] lg:flex">
 						{navItems.map(item => (
 							<button
 								key={item.id}
 								onClick={() => scrollToSection(item.id)}
-								className="relative px-4 py-2 text-sm font-medium transition-colors"
-							>
-								<span
-									className={
-										activeSection === item.id
-											? "text-white"
-											: "text-neutral-400 hover:text-white"
-									}
-								>
-									{item.label}
-								</span>
-								{activeSection === item.id && (
-									<motion.div
-										layoutId="activeSection"
-										className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-gradient-to-r from-violet-500 to-indigo-400"
-										transition={{
-											type: "spring",
-											stiffness: 380,
-											damping: 30,
-										}}
-									/>
+								className={cn(
+									"font-mono text-[12.5px] transition-colors hover:text-gold",
+									activeSection === item.id ? "text-gold" : "text-ink-dim",
 								)}
+							>
+								{item.label}
 							</button>
 						))}
 					</nav>
 
+					{/* CV button (desktop) */}
+					<a
+						href={personalInfo.resumeUrl}
+						className="hidden items-center gap-2 rounded-[8px] border border-line-cv px-3.5 py-2 font-mono text-[12.5px] text-ink transition-colors hover:border-gold lg:inline-flex"
+					>
+						CV ↓
+					</a>
+
 					{/* Mobile hamburger */}
 					<button
 						onClick={() => setMobileOpen(true)}
-						className="text-neutral-400 transition-colors hover:text-white lg:hidden"
+						aria-label="Open menu"
+						className="text-ink-dim transition-colors hover:text-ink lg:hidden"
 					>
-						<Menu size={24} />
+						<Menu size={22} />
 					</button>
 				</div>
 			</header>

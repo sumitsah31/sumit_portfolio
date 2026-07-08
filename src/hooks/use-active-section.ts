@@ -1,15 +1,7 @@
 import { useEffect } from "react"
 import { useNavigationStore } from "@/stores/navigation-store"
 
-const SECTION_IDS = [
-	"hero",
-	"about",
-	"experience",
-	"projects",
-	"github",
-	"travel",
-	"contact",
-]
+const SECTION_IDS = ["work", "experience", "skills", "github", "contact"]
 
 export function useActiveSection() {
 	const setActiveSection = useNavigationStore(s => s.setActiveSection)

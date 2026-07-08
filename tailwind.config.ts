@@ -18,9 +18,39 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ["Inter", "system-ui", "sans-serif"],
+				sans: ["Space Grotesk", "system-ui", "sans-serif"],
+				serif: ["Newsreader", "Georgia", "serif"],
+				mono: ["JetBrains Mono", "ui-monospace", "monospace"],
 			},
 			colors: {
+				// Premium-dark palette (public portfolio)
+				night: "#161310",
+				surface: {
+					DEFAULT: "#1d1a16",
+					hover: "#211d18",
+					inset: "#161310",
+				},
+				line: {
+					DEFAULT: "#2a2622",
+					chip: "#2f2a25",
+					cv: "#3a352f",
+				},
+				ink: {
+					DEFAULT: "#ece9e2",
+					muted: "#b3aca2",
+					dim: "#9a938a",
+					faint: "#6b655d",
+					list: "#cfc9c0",
+				},
+				gold: {
+					DEFAULT: "#e0a94a",
+					hover: "#eab863",
+					"tint-border": "#4a3d24",
+					"tint-bg": "#2a2115",
+				},
+				brace: "#7a746a",
+				online: "#7bd88f",
+				// shadcn tokens (admin UI)
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
