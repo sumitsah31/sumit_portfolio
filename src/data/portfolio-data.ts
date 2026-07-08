@@ -15,7 +15,7 @@ export const personalInfo = {
 
 // Toggles mirroring the design handoff state. Flip to hide sections/pill.
 export const siteConfig = {
-	available: true,
+	available: false,
 	showGithub: true,
 	showContactForm: true,
 }

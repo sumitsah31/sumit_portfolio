@@ -1,4 +1,4 @@
-import homeImage from "@/assets/homeImage.jpg"
+import heroPortrait from "@/assets/hero-portrait.jpg"
 import { personalInfo, siteConfig } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
 
@@ -54,7 +54,7 @@ export default function Hero() {
 				<div className="relative order-first mx-auto w-full max-w-[340px] lg:order-none lg:max-w-none">
 					<div className="absolute inset-[-1px] rounded-[14px] bg-[linear-gradient(160deg,#e0a94a55,transparent)]" />
 					<img
-						src={homeImage}
+						src={heroPortrait}
 						alt="Sumit Kumar Sah"
 						className="relative aspect-[3/3.6] w-full rounded-[13px] object-cover object-[center_18%] [filter:grayscale(0.35)_contrast(1.05)_brightness(0.92)]"
 					/>
