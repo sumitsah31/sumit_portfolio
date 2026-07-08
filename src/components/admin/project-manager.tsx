@@ -87,7 +87,10 @@ export default function ProjectManager() {
 					onChange={e =>
 						setEditing({
 							...editing,
-							tech_stack: e.target.value.split(",").map(s => s.trim()).filter(Boolean),
+							tech_stack: e.target.value
+								.split(",")
+								.map(s => s.trim())
+								.filter(Boolean),
 						})
 					}
 					placeholder="Tech Stack (comma separated)"

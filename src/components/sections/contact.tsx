@@ -1,7 +1,8 @@
 import SectionWrapper from "@/components/layout/section-wrapper"
+import SectionMarker from "@/components/ui/section-marker"
 import { personalInfo } from "@/data/portfolio-data"
 import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Phone, Send } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { type FormEvent, useState } from "react"
 
 export default function Contact() {
@@ -34,117 +35,78 @@ export default function Contact() {
 		}
 	}
 
+	const labelText =
+		status === "sending"
+			? "sending..."
+			: status === "sent"
+				? "sent ✓"
+				: "say hi"
+
 	return (
 		<SectionWrapper id="contact">
-			<div className="mx-auto max-w-2xl text-center">
-				<h2 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
-					Get In{" "}
-					<span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-						Touch
-					</span>
-				</h2>
-				<p className="mb-10 text-neutral-400">
-					Feel free to reach out for collaborations, opportunities, or just a
-					friendly hello.
-				</p>
+			<SectionMarker name="contact" />
+			<h2 className="mb-6 text-4xl font-semibold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+				Let's make{" "}
+				<span className="font-serif font-normal italic">something.</span>
+			</h2>
 
-				{/* Contact form */}
-				<motion.form
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					onSubmit={handleSubmit}
-					className="mb-10 flex flex-col gap-4 text-left"
-				>
-					<div className="grid gap-4 sm:grid-cols-2">
-						<input
-							type="text"
-							name="name"
-							required
-							placeholder="Your Name"
-							className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-violet-500"
-						/>
-						<input
-							type="email"
-							name="email"
-							required
-							placeholder="Your Email"
-							className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-violet-500"
-						/>
-					</div>
-					<textarea
-						name="message"
+			<p className="mb-10 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+				Tell me what you're building, and I'll get back to you. Or just say
+				hello — I'm friendly.
+			</p>
+
+			<motion.form
+				initial={{ opacity: 0, y: 16 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true }}
+				onSubmit={handleSubmit}
+				className="flex max-w-2xl flex-col gap-4"
+			>
+				<div className="grid gap-3 sm:grid-cols-2">
+					<input
+						type="text"
+						name="name"
 						required
-						rows={5}
-						placeholder="Your Message"
-						className="resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-violet-500"
+						placeholder="your name"
+						className="rounded-xl border border-white/[0.08] bg-surface px-4 py-3 font-mono text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent-cyan/50"
 					/>
+					<input
+						type="email"
+						name="email"
+						required
+						placeholder="you@somewhere.com"
+						className="rounded-xl border border-white/[0.08] bg-surface px-4 py-3 font-mono text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent-cyan/50"
+					/>
+				</div>
+				<textarea
+					name="message"
+					required
+					rows={5}
+					placeholder="what are you making?"
+					className="resize-none rounded-xl border border-white/[0.08] bg-surface px-4 py-3 font-mono text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent-cyan/50"
+				/>
+				<div className="flex items-center gap-4 pt-1">
 					<button
 						type="submit"
 						disabled={status === "sending"}
-						className="inline-flex items-center justify-center gap-2 self-center rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-3 text-sm font-semibold text-white transition-all hover:from-violet-500 hover:to-indigo-500 hover:shadow-lg hover:shadow-violet-500/25 disabled:opacity-50"
+						className="inline-flex h-11 items-center gap-2 self-start rounded-xl bg-accent-cyan px-5 text-sm font-medium text-[#0a0a0f] shadow-sm shadow-accent-cyan/20 transition-all hover:bg-accent-cyan/90 hover:shadow-md hover:shadow-accent-cyan/30 disabled:opacity-50"
 					>
-						<Send size={16} />
-						{status === "sending"
-							? "Sending..."
-							: status === "sent"
-								? "Message Sent!"
-								: "Send Message"}
+						{labelText}
+						<ArrowRight size={16} />
 					</button>
-					{status === "error" && (
-						<p className="text-center text-sm text-red-400">
-							Something went wrong. Please try again.
-						</p>
-					)}
-				</motion.form>
-
-				{/* Social links */}
-				<div className="mb-16 flex items-center justify-center gap-4">
-					{[
-						{
-							icon: Mail,
-							href: `mailto:${personalInfo.email}`,
-							label: "Email",
-						},
-						{
-							icon: Phone,
-							href: `tel:${personalInfo.phone}`,
-							label: "Phone",
-						},
-						{
-							icon: Linkedin,
-							href: personalInfo.linkedin,
-							label: "LinkedIn",
-						},
-						{
-							icon: Github,
-							href: personalInfo.github,
-							label: "GitHub",
-						},
-					].map(item => (
-						<a
-							key={item.label}
-							href={item.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group rounded-full border border-white/10 bg-white/5 p-3 transition-all hover:border-violet-500/50 hover:bg-violet-500/10"
-						>
-							<item.icon
-								size={18}
-								className="text-neutral-400 transition-colors group-hover:text-violet-400"
-							/>
-						</a>
-					))}
+					<a
+						href={`mailto:${personalInfo.email}`}
+						className="font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-accent-cyan"
+					>
+						or email →
+					</a>
 				</div>
-
-				{/* Footer */}
-				<div className="border-t border-white/5 pt-8 text-center text-sm text-neutral-500">
-					<p>
-						&copy; {new Date().getFullYear()} {personalInfo.name}. Built with
-						React & Tailwind CSS.
+				{status === "error" && (
+					<p className="font-mono text-xs uppercase tracking-wider text-red-400">
+						something went wrong. please try again.
 					</p>
-				</div>
-			</div>
+				)}
+			</motion.form>
 		</SectionWrapper>
 	)
 }

@@ -19,6 +19,14 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ["Inter", "system-ui", "sans-serif"],
+				serif: ["Playfair Display", "EB Garamond", "Georgia", "serif"],
+				mono: [
+					"JetBrains Mono",
+					"ui-monospace",
+					"SFMono-Regular",
+					"Menlo",
+					"monospace",
+				],
 			},
 			colors: {
 				border: "hsl(var(--border))",
@@ -26,6 +34,10 @@ module.exports = {
 				ring: "hsl(var(--ring))",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
+				surface: {
+					DEFAULT: "hsl(var(--surface))",
+					2: "hsl(var(--surface-2))",
+				},
 				primary: {
 					DEFAULT: "hsl(var(--primary))",
 					foreground: "hsl(var(--primary-foreground))",
@@ -45,6 +57,14 @@ module.exports = {
 				accent: {
 					DEFAULT: "hsl(var(--accent))",
 					foreground: "hsl(var(--accent-foreground))",
+					cyan: "hsl(var(--accent-cyan))",
+					orange: "hsl(var(--accent-orange))",
+					pink: "hsl(var(--accent-pink))",
+					lime: "hsl(var(--accent-lime))",
+					violet: "hsl(var(--accent-violet))",
+				},
+				status: {
+					green: "hsl(var(--status-green))",
 				},
 				popover: {
 					DEFAULT: "hsl(var(--popover))",
@@ -81,6 +101,18 @@ module.exports = {
 					"0%, 100%": { backgroundPosition: "0% 50%" },
 					"50%": { backgroundPosition: "100% 50%" },
 				},
+				blink: {
+					"0%, 100%": { opacity: "1" },
+					"50%": { opacity: "0" },
+				},
+				marquee: {
+					"0%": { transform: "translateX(0%)" },
+					"100%": { transform: "translateX(-50%)" },
+				},
+				"marquee-reverse": {
+					"0%": { transform: "translateX(-50%)" },
+					"100%": { transform: "translateX(0%)" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -88,10 +120,19 @@ module.exports = {
 				float: "float 6s ease-in-out infinite",
 				"pulse-glow": "pulse-glow 2s ease-in-out infinite",
 				"gradient-shift": "gradient-shift 8s ease infinite",
+				blink: "blink 1.2s steps(2, start) infinite",
+				marquee: "marquee 40s linear infinite",
+				"marquee-reverse": "marquee-reverse 40s linear infinite",
 			},
 			backgroundImage: {
 				"grid-pattern":
-					"linear-gradient(to right, rgba(139,92,246,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(139,92,246,0.03) 1px, transparent 1px)",
+					"linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px)",
+				"gradient-peach": "linear-gradient(135deg, #f472b6 0%, #fb923c 100%)",
+				"gradient-cyan": "linear-gradient(135deg, #22d3ee 0%, #8b5cf6 100%)",
+				"gradient-violet": "linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%)",
+				"gradient-lime": "linear-gradient(135deg, #a3e635 0%, #14b8a6 100%)",
+				"gradient-sunset":
+					"linear-gradient(135deg, #fb923c 0%, #f472b6 50%, #8b5cf6 100%)",
 			},
 			backgroundSize: {
 				"grid-40": "40px 40px",

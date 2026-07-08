@@ -1,3 +1,4 @@
+import TerminalHeader from "@/components/ui/terminal-header"
 import { navItems } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
 import { useNavigationStore } from "@/stores/navigation-store"
@@ -13,15 +14,14 @@ export default function Navbar() {
 
 	return (
 		<>
-			<header className="fixed left-0 right-0 top-[3px] z-50 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-md">
+			<header className="fixed left-0 right-0 top-[3px] z-50 border-b border-white/[0.06] bg-[#0a0a0f]/80 backdrop-blur-md">
 				<div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<button
 						onClick={() => scrollToSection("hero")}
-						className="text-xl font-bold tracking-tight"
+						className="transition-opacity hover:opacity-80"
+						aria-label="Home"
 					>
-						<span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-							SK
-						</span>
+						<TerminalHeader path="/menu" />
 					</button>
 
 					{/* Desktop nav */}
@@ -30,13 +30,13 @@ export default function Navbar() {
 							<button
 								key={item.id}
 								onClick={() => scrollToSection(item.id)}
-								className="relative px-4 py-2 text-sm font-medium transition-colors"
+								className="relative px-4 py-2 font-mono text-xs uppercase tracking-wider transition-colors"
 							>
 								<span
 									className={
 										activeSection === item.id
-											? "text-white"
-											: "text-neutral-400 hover:text-white"
+											? "text-accent-cyan"
+											: "text-muted-foreground hover:text-foreground"
 									}
 								>
 									{item.label}
@@ -44,7 +44,7 @@ export default function Navbar() {
 								{activeSection === item.id && (
 									<motion.div
 										layoutId="activeSection"
-										className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-gradient-to-r from-violet-500 to-indigo-400"
+										className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-accent-cyan"
 										transition={{
 											type: "spring",
 											stiffness: 380,
@@ -59,9 +59,10 @@ export default function Navbar() {
 					{/* Mobile hamburger */}
 					<button
 						onClick={() => setMobileOpen(true)}
-						className="text-neutral-400 transition-colors hover:text-white lg:hidden"
+						className="text-muted-foreground transition-colors hover:text-foreground lg:hidden"
+						aria-label="Open menu"
 					>
-						<Menu size={24} />
+						<Menu size={22} />
 					</button>
 				</div>
 			</header>

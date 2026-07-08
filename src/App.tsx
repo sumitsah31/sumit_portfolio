@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Helmet } from "react-helmet-async"
 import AdminApp from "./components/admin/admin-app"
+import Footer from "./components/layout/footer"
 import Navbar from "./components/layout/navbar"
 import ScrollProgress from "./components/layout/scroll-progress"
 import About from "./components/sections/about"
@@ -27,20 +28,38 @@ function Portfolio() {
 					name="keywords"
 					content="Sumit Kumar Sah, Full Stack Developer, React, TypeScript, Next.js, GoLang, Portfolio, Frontend Developer, CodaPet"
 				/>
-				<meta name="author" content="Sumit Kumar Sah" />
-				<meta property="og:title" content="Sumit Kumar Sah — Full Stack Web Developer" />
+				<meta
+					name="author"
+					content="Sumit Kumar Sah"
+				/>
+				<meta
+					property="og:title"
+					content="Sumit Kumar Sah — Full Stack Web Developer"
+				/>
 				<meta
 					property="og:description"
 					content="Full Stack Developer specializing in React, TypeScript, Next.js, and Go. Currently building at CodaPet."
 				/>
-				<meta property="og:type" content="website" />
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:title" content="Sumit Kumar Sah — Full Stack Web Developer" />
+				<meta
+					property="og:type"
+					content="website"
+				/>
+				<meta
+					name="twitter:card"
+					content="summary_large_image"
+				/>
+				<meta
+					name="twitter:title"
+					content="Sumit Kumar Sah — Full Stack Web Developer"
+				/>
 				<meta
 					name="twitter:description"
 					content="Full Stack Developer specializing in React, TypeScript, Next.js, and Go. Currently building at CodaPet."
 				/>
-				<link rel="canonical" href="https://sumitkumarsah.dev" />
+				<link
+					rel="canonical"
+					href="https://sumitkumarsah.dev"
+				/>
 			</Helmet>
 			<ScrollProgress />
 			<Navbar />
@@ -53,6 +72,7 @@ function Portfolio() {
 				<Travel />
 				<Contact />
 			</main>
+			<Footer />
 		</div>
 	)
 }

@@ -1,22 +1,42 @@
+import GradientTile from "@/components/ui/gradient-tile"
+import Marquee from "@/components/ui/marquee"
+import MonoPill from "@/components/ui/mono-pill"
 import { personalInfo } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
 import { motion } from "framer-motion"
-import {
-	ArrowDown,
-	Download,
-	Github,
-	Linkedin,
-	Mail,
-	MapPin,
-	Phone,
-} from "lucide-react"
+import { ArrowRight, Download } from "lucide-react"
 
-const floatingIcons = [
-	{ label: "React", delay: 0 },
-	{ label: "TypeScript", delay: 0.8 },
-	{ label: "Go", delay: 1.6 },
-	{ label: "Node.js", delay: 2.4 },
-	{ label: "Tailwind", delay: 3.2 },
+type DotColor = "cyan" | "orange" | "pink" | "lime" | "violet"
+
+const stackTagsRowA: { label: string; dot: DotColor }[] = [
+	{ label: "design", dot: "cyan" },
+	{ label: "code", dot: "orange" },
+	{ label: "founding", dot: "pink" },
+	{ label: "next.js", dot: "lime" },
+	{ label: "supabase", dot: "violet" },
+	{ label: "react", dot: "cyan" },
+	{ label: "typescript", dot: "orange" },
+	{ label: "go", dot: "pink" },
+	{ label: "tailwind", dot: "lime" },
+	{ label: "writing", dot: "violet" },
+	{ label: "framer-motion", dot: "cyan" },
+	{ label: "supabase", dot: "orange" },
+	{ label: "vercel", dot: "pink" },
+]
+
+const stackTagsRowB: { label: string; dot: DotColor }[] = [
+	{ label: "figma", dot: "violet" },
+	{ label: "design systems", dot: "lime" },
+	{ label: "tanstack query", dot: "cyan" },
+	{ label: "zustand", dot: "orange" },
+	{ label: "tailwind css", dot: "pink" },
+	{ label: "shadcn ui", dot: "lime" },
+	{ label: "node.js", dot: "violet" },
+	{ label: "mongodb", dot: "cyan" },
+	{ label: "docker", dot: "orange" },
+	{ label: "ci/cd", dot: "pink" },
+	{ label: "git", dot: "lime" },
+	{ label: "java", dot: "violet" },
 ]
 
 export default function Hero() {
@@ -25,176 +45,155 @@ export default function Hero() {
 	return (
 		<section
 			id="hero"
-			className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
+			className="relative flex min-h-screen flex-col justify-center overflow-hidden px-4 pt-28 sm:px-6 lg:px-8"
 		>
-			{/* Background gradient orbs */}
+			{/* Subtle grid pattern */}
+			<div className="pointer-events-none absolute inset-0 bg-grid-pattern bg-grid-40 opacity-50" />
+
+			{/* Soft accent orbs */}
 			<div className="pointer-events-none absolute inset-0">
-				<div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-violet-500/10 blur-[128px]" />
-				<div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-indigo-500/10 blur-[128px]" />
+				<div className="absolute right-[10%] top-[15%] h-72 w-72 rounded-full bg-accent-cyan/[0.06] blur-[140px]" />
+				<div className="absolute bottom-[10%] left-[5%] h-72 w-72 rounded-full bg-accent-orange/[0.05] blur-[140px]" />
 			</div>
 
-			{/* Grid pattern */}
-			<div className="pointer-events-none absolute inset-0 bg-grid-pattern bg-grid-40 opacity-40" />
-
-			{/* Floating tech labels */}
-			<div className="pointer-events-none absolute inset-0 hidden lg:block">
-				{floatingIcons.map((item, i) => (
-					<motion.div
-						key={item.label}
-						className="absolute rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-neutral-400 backdrop-blur-sm"
-						style={{
-							top: `${20 + i * 14}%`,
-							right: `${8 + (i % 3) * 6}%`,
-						}}
-						animate={{ y: [0, -10, 0] }}
-						transition={{
-							duration: 4,
-							repeat: Infinity,
-							delay: item.delay,
-							ease: "easeInOut",
-						}}
-					>
-						{item.label}
-					</motion.div>
-				))}
-			</div>
-
-			<div className="relative z-10 mx-auto max-w-4xl text-center">
-				<motion.p
-					initial={{ opacity: 0, y: 20 }}
+			<div className="relative z-10 mx-auto w-full max-w-6xl">
+				{/* Top mono availability tag */}
+				<motion.div
+					initial={{ opacity: 0, y: -8 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
-					className="mb-4 text-sm font-medium tracking-widest text-neutral-400 sm:text-base"
+					className="mb-10"
 				>
-					HI THERE, I'M
-				</motion.p>
+					<MonoPill
+						dot="lime"
+						className="text-[11px]"
+					>
+						available · selectively
+					</MonoPill>
+				</motion.div>
 
+				{/* Headline */}
 				<motion.h1
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.1 }}
-					className="mb-4 text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+					transition={{ duration: 0.6, delay: 0.05 }}
+					className="max-w-5xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]"
 				>
-					<span className="bg-gradient-to-r from-violet-400 via-violet-300 to-indigo-400 bg-clip-text text-transparent">
-						{personalInfo.name}
-					</span>
+					I build{" "}
+					<span className="relative inline-block font-serif font-normal italic">
+						products
+						<svg
+							aria-hidden
+							viewBox="0 0 240 12"
+							preserveAspectRatio="none"
+							className="absolute -bottom-2 left-0 right-0 h-3 w-full"
+						>
+							<path
+								d="M2 8 C 60 2, 120 12, 238 4"
+								fill="none"
+								stroke="hsl(var(--accent-orange))"
+								strokeWidth="2"
+								strokeLinecap="round"
+							/>
+						</svg>
+					</span>{" "}
+					people love and tinker
+					<br />
+					on trips in between.
 				</motion.h1>
 
+				{/* Subhead */}
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
-					className="mb-6 text-xl font-medium text-neutral-300 sm:text-2xl md:text-3xl"
+					transition={{ duration: 0.5, delay: 0.15 }}
+					className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
 				>
-					{personalInfo.title}
-					<span className="text-violet-400">.</span>
+					{personalInfo.title} based in {personalInfo.location.split(",")[0]}.
+					Currently shipping at{" "}
+					<a
+						href="https://www.codapet.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-foreground underline decoration-accent-cyan/60 underline-offset-4 transition-colors hover:text-accent-cyan"
+					>
+						CodaPet
+					</a>
+					. I care about fast, quiet software, good typography, and building
+					things with taste.
 				</motion.p>
 
-				{/* Animated divider */}
-				<motion.div
-					initial={{ scaleX: 0 }}
-					animate={{ scaleX: 1 }}
-					transition={{ duration: 0.8, delay: 0.3 }}
-					className="mx-auto mb-6 h-px w-48 bg-gradient-to-r from-transparent via-violet-500 to-transparent"
-				/>
-
-				{/* Location */}
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: 0.4 }}
-					className="mb-8 flex items-center justify-center gap-2 text-sm text-neutral-400"
-				>
-					<MapPin size={14} />
-					<span>{personalInfo.location}</span>
-				</motion.div>
-
-				{/* Social icons */}
+				{/* CTAs */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.5 }}
-					className="mb-10 flex items-center justify-center gap-4"
-				>
-					{[
-						{
-							icon: Mail,
-							href: `mailto:${personalInfo.email}`,
-							label: "Email",
-						},
-						{
-							icon: Phone,
-							href: `tel:${personalInfo.phone}`,
-							label: "Phone",
-						},
-						{
-							icon: Linkedin,
-							href: personalInfo.linkedin,
-							label: "LinkedIn",
-						},
-						{
-							icon: Github,
-							href: personalInfo.github,
-							label: "GitHub",
-						},
-					].map(item => (
-						<a
-							key={item.label}
-							href={item.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group rounded-full border border-white/10 bg-white/5 p-3 transition-all hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-lg hover:shadow-violet-500/10"
-						>
-							<item.icon
-								size={18}
-								className="text-neutral-400 transition-colors group-hover:text-violet-400"
-							/>
-						</a>
-					))}
-				</motion.div>
-
-				{/* CTA buttons */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.6 }}
-					className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+					transition={{ duration: 0.5, delay: 0.25 }}
+					className="mt-10 flex flex-wrap items-center gap-3"
 				>
 					<button
 						onClick={() => scrollToSection("projects")}
-						className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-3 text-sm font-semibold text-white transition-all hover:from-violet-500 hover:to-indigo-500 hover:shadow-lg hover:shadow-violet-500/25"
+						className="inline-flex h-11 items-center gap-2 rounded-xl bg-accent-cyan px-5 text-sm font-medium text-[#0a0a0f] shadow-sm shadow-accent-cyan/20 transition-all hover:bg-accent-cyan/90 hover:shadow-md hover:shadow-accent-cyan/30"
 					>
-						View My Work
+						See selected work
+						<ArrowRight size={16} />
+					</button>
+					<button
+						onClick={() => scrollToSection("about")}
+						className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/[0.08] bg-surface px-5 font-mono text-xs uppercase tracking-wider text-foreground/80 transition-all hover:border-accent-cyan/30 hover:bg-surface-2 hover:text-foreground"
+					>
+						read the brief
 					</button>
 					<a
 						href={personalInfo.resumeUrl}
 						download="Sumit_Kumar_Sah_Resume.pdf"
-						className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3 text-sm font-semibold text-neutral-300 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
+						className="inline-flex h-11 items-center gap-2 rounded-xl px-3 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-accent-cyan"
 					>
-						<Download size={16} />
-						Download CV
+						<Download size={14} />
+						download cv
 					</a>
 				</motion.div>
 			</div>
 
-			{/* Scroll indicator */}
-			<motion.button
-				onClick={() => scrollToSection("about")}
+			{/* Scrolling stack tag bands — full-bleed below hero content */}
+			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
-				transition={{ delay: 1 }}
-				className="absolute bottom-8 left-1/2 -translate-x-1/2"
+				transition={{ duration: 0.8, delay: 0.5 }}
+				className="relative z-10 -mx-4 mt-16 flex w-screen max-w-[100vw] flex-col gap-3 sm:-mx-6 sm:gap-4 lg:-mx-8"
 			>
-				<motion.div
-					animate={{ y: [0, 8, 0] }}
-					transition={{ duration: 1.5, repeat: Infinity }}
-				>
-					<ArrowDown
-						size={20}
-						className="text-neutral-500"
-					/>
-				</motion.div>
-			</motion.button>
+				<Marquee
+					items={stackTagsRowA.map(t => (
+						<MonoPill
+							key={t.label}
+							dot={t.dot}
+						>
+							{t.label}
+						</MonoPill>
+					))}
+				/>
+				<Marquee
+					reverse
+					items={stackTagsRowB.map(t => (
+						<MonoPill
+							key={t.label}
+							dot={t.dot}
+						>
+							{t.label}
+						</MonoPill>
+					))}
+				/>
+			</motion.div>
+
+			{/* Decorative gradient block right side (mirrors figma's tilted gradient card) */}
+			<motion.div
+				initial={{ opacity: 0, rotate: -6, x: 40 }}
+				animate={{ opacity: 1, rotate: -8, x: 0 }}
+				transition={{ duration: 0.8, delay: 0.4 }}
+				className="pointer-events-none absolute right-6 top-28 hidden h-44 w-44 overflow-hidden rounded-2xl shadow-2xl shadow-black/40 lg:block"
+				style={{ transformOrigin: "center" }}
+			>
+				<GradientTile variant="violet" />
+			</motion.div>
 		</section>
 	)
 }

@@ -31,9 +31,7 @@ export default function TravelManager() {
 	}, [])
 
 	const getImageUrl = (path: string) => {
-		const { data } = supabase.storage
-			.from("travel-photos")
-			.getPublicUrl(path)
+		const { data } = supabase.storage.from("travel-photos").getPublicUrl(path)
 		return data.publicUrl
 	}
 

@@ -1,7 +1,7 @@
 export const personalInfo = {
 	name: "Sumit Kumar Sah",
 	title: "Full Stack Web Developer",
-	location: "Hyderabad, Telangana, India",
+	location: "Bengaluru, Karnataka, India",
 	email: "sahsumitofficial@gmail.com",
 	phone: "+917656087001",
 	linkedin: "https://www.linkedin.com/in/sumitkumarsah31/",
@@ -15,19 +15,18 @@ export const skills = {
 	frontend: [
 		"React JS",
 		"Redux",
+		"Next.js",
+		"Vercel",
+		"Design System",
+		"Tailwind CSS",
+		"React",
+		"TypeScript",
 		"React-Tracked",
 		"TanStack Query",
-		"TanStack Router",
-		"Tailwind CSS",
+		"Zustand",
 	],
 	backend: ["GoLang", "Node.js", "MongoDB"],
-	languages: [
-		"JavaScript",
-		"TypeScript",
-		"Java",
-		"HTML/CSS",
-		"GoLang",
-	],
+	languages: ["JavaScript", "TypeScript", "Java", "HTML/CSS", "GoLang"],
 	tools: ["VS Code", "Docker", "Git", "GitLab", "CI/CD"],
 }
 
