@@ -1,5 +1,6 @@
 import SectionWrapper from "@/components/layout/section-wrapper"
 import { personalInfo } from "@/data/portfolio-data"
+import { isSupabaseConfigured, supabase } from "@/lib/supabase"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Phone, Send } from "lucide-react"
 import { type FormEvent, useState } from "react"
@@ -11,24 +12,35 @@ export default function Contact() {
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		setStatus("sending")
 
 		const form = e.currentTarget
 		const formData = new FormData(form)
+		const name = String(formData.get("name") || "").trim()
+		const email = String(formData.get("email") || "").trim()
+		const message = String(formData.get("message") || "").trim()
+
+		// Without Supabase configured there is no backend to store the message,
+		// so fall back to opening the visitor's email client.
+		if (!isSupabaseConfigured) {
+			const subject = encodeURIComponent(`Portfolio message from ${name}`)
+			const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`)
+			window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`
+			return
+		}
+
+		setStatus("sending")
 
 		try {
-			const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-				method: "POST",
-				body: formData,
-				headers: { Accept: "application/json" },
-			})
-			if (res.ok) {
-				setStatus("sent")
-				form.reset()
-				setTimeout(() => setStatus("idle"), 4000)
-			} else {
+			const { error } = await supabase
+				.from("contact_messages")
+				.insert({ name, email, message })
+			if (error) {
 				setStatus("error")
+				return
 			}
+			setStatus("sent")
+			form.reset()
+			setTimeout(() => setStatus("idle"), 4000)
 		} catch {
 			setStatus("error")
 		}

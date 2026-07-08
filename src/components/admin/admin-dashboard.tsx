@@ -1,10 +1,11 @@
 import { supabase } from "@/lib/supabase"
 import { useState } from "react"
 import ExperienceManager from "./experience-manager"
+import MessageManager from "./message-manager"
 import ProjectManager from "./project-manager"
 import TravelManager from "./travel-manager"
 
-const tabs = ["Experiences", "Projects", "Travel Photos"] as const
+const tabs = ["Experiences", "Projects", "Travel Photos", "Messages"] as const
 type Tab = (typeof tabs)[number]
 
 export default function AdminDashboard() {
@@ -58,6 +59,7 @@ export default function AdminDashboard() {
 				{activeTab === "Experiences" && <ExperienceManager />}
 				{activeTab === "Projects" && <ProjectManager />}
 				{activeTab === "Travel Photos" && <TravelManager />}
+				{activeTab === "Messages" && <MessageManager />}
 			</div>
 		</div>
 	)
