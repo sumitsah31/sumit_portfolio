@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import { useState } from "react"
 import { Helmet } from "react-helmet-async"
 import AdminApp from "./components/admin/admin-app"
@@ -70,6 +71,7 @@ function Portfolio() {
 				{siteConfig.showGithub && <GitHub />}
 				<Contact />
 			</main>
+			<Analytics />
 		</div>
 	)
 }

@@ -1,6 +1,7 @@
 import heroPortrait from "@/assets/hero-portrait.jpg"
 import { personalInfo, siteConfig } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
+import { analytics } from "@/lib/analytics"
 
 export default function Hero() {
 	const scrollToSection = useScrollToSection()
@@ -31,13 +32,17 @@ export default function Hero() {
 					</p>
 					<div className="flex flex-wrap items-center gap-[14px]">
 						<button
-							onClick={() => scrollToSection("work")}
+							onClick={() => {
+								analytics.viewWork()
+								scrollToSection("work")
+							}}
 							className="inline-flex items-center gap-2.5 rounded-[8px] bg-gold px-[26px] py-[15px] text-[14px] font-semibold text-night transition-colors hover:bg-gold-hover"
 						>
 							View work →
 						</button>
 						<a
 							href={personalInfo.resumeUrl}
+							onClick={() => analytics.downloadCV("hero")}
 							className="inline-flex items-center gap-2.5 rounded-[8px] border border-line-cv px-[26px] py-[14px] text-[14px] font-semibold text-ink transition-colors hover:border-gold"
 						>
 							Download CV ↓

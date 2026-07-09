@@ -1,4 +1,5 @@
 import { personalInfo, siteConfig } from "@/data/portfolio-data"
+import { analytics } from "@/lib/analytics"
 import { isSupabaseConfigured, supabase } from "@/lib/supabase"
 import { motion } from "framer-motion"
 import { type FormEvent, useState } from "react"
@@ -55,6 +56,7 @@ export default function Contact() {
 			const subject = encodeURIComponent(`Portfolio message from ${name}`)
 			const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`)
 			window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`
+			analytics.contactSubmit("mailto")
 			setStatus("sent")
 			return
 		}
@@ -68,6 +70,7 @@ export default function Contact() {
 				setStatus("error")
 				return
 			}
+			analytics.contactSubmit("supabase")
 			setStatus("sent")
 			form.reset()
 			setTimeout(() => setStatus("idle"), 5000)

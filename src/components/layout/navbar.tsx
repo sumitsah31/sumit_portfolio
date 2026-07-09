@@ -1,5 +1,6 @@
 import { navItems, personalInfo } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
+import { analytics } from "@/lib/analytics"
 import { cn } from "@/lib/utils"
 import { useNavigationStore } from "@/stores/navigation-store"
 import { Menu } from "lucide-react"
@@ -59,6 +60,7 @@ export default function Navbar() {
 					{/* CV button (desktop) */}
 					<a
 						href={personalInfo.resumeUrl}
+						onClick={() => analytics.downloadCV("nav")}
 						className="hidden items-center gap-2 rounded-[8px] border border-line-cv px-3.5 py-2 font-mono text-[12.5px] text-ink transition-colors hover:border-gold lg:inline-flex"
 					>
 						CV ↓

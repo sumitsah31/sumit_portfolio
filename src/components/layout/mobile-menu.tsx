@@ -1,5 +1,6 @@
 import { navItems, personalInfo } from "@/data/portfolio-data"
 import { useScrollToSection } from "@/hooks/use-scroll-to-section"
+import { analytics } from "@/lib/analytics"
 import { useNavigationStore } from "@/stores/navigation-store"
 import { AnimatePresence, motion } from "framer-motion"
 import { X } from "lucide-react"
@@ -62,6 +63,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
 						<a
 							href={personalInfo.resumeUrl}
+							onClick={() => analytics.downloadCV("mobile")}
 							className="mt-6 inline-flex items-center justify-center gap-2 rounded-[8px] border border-line-cv px-4 py-3 font-mono text-[13px] text-ink transition-colors hover:border-gold"
 						>
 							CV ↓

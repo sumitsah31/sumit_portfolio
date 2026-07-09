@@ -5,6 +5,7 @@ import {
 	staticProjects,
 	stripGoTech,
 } from "@/data/portfolio-data"
+import { analytics } from "@/lib/analytics"
 import { isSupabaseConfigured, supabase } from "@/lib/supabase"
 import { useEffect, useState } from "react"
 
@@ -23,6 +24,7 @@ function ProjectCard({
 			href={project.url ?? undefined}
 			target="_blank"
 			rel="noopener noreferrer"
+			onClick={() => analytics.projectClick(project.name, source)}
 			className="block rounded-[14px] border border-line bg-surface px-[30px] py-7 transition-colors hover:border-[#e0a94a55] hover:bg-surface-hover"
 		>
 			<div className="mb-3.5 flex flex-wrap items-center gap-3">
